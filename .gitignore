@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output and generated types
+/.next/
+/out/
+/build/
+/dist/
+next-env.d.ts
+*.tsbuildinfo
+
+# Local caches and test reports
+.cache/
+.turbo/
+.eslintcache
+/.vercel/
+/coverage/
+/playwright-report/
+/test-results/
+
+# Environment files and credentials
+.env
+.env.*
+!.env.example
+.npmrc
+*.pem
+*.key
+*.pfx
+
+# Logs and OS metadata
+*.log
+.DS_Store
+Thumbs.db

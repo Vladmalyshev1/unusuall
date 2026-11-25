@@ -1,0 +1,10 @@
+/* The root layout still applies the temporary shell used by the four route stubs. */
+main:has(> .ui-kit) {
+  max-width: none;
+  padding: 0;
+}
+
+.ui-kit-intro {
+  background: radial-gradient(ellipse at 75% 105%, color-mix(in srgb, var(--color-blue) 45%, transparent), transparent 62%),
+    var(--color-bg-deep);
+}

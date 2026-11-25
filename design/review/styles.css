@@ -1,0 +1,101 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  color: #eee;
+  background: #11171e;
+}
+
+* { box-sizing: border-box; }
+body { max-width: 90rem; margin: 0 auto; padding: clamp(1rem, 4vw, 3rem); }
+h1 { margin: 0 0 .5rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+h2 { margin: 2rem 0 .75rem; font-size: 1.2rem; }
+h3, p, figure { margin: 0; }
+body > p, section > p { margin: .5rem 0 1rem; }
+p, figcaption { line-height: 1.5; }
+a { color: #b4c9f0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(21rem, 100%), 1fr));
+  gap: .75rem;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid #535c68;
+  border-radius: .65rem;
+  background: #171d25;
+}
+
+.card > p { margin-top: .6rem; }
+.details, figcaption { color: #bfc7d3; font-size: .875rem; }
+.specimen { margin: .8rem 0 0; padding: 0; list-style: none; }
+.specimen li + li { margin-top: .65rem; }
+
+.display {
+  font-family: var(--face), sans-serif;
+  font-size: clamp(1.125rem, 2.1vw, 1.625rem);
+  font-weight: var(--weight);
+  letter-spacing: .045em;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.body-text {
+  font-family: var(--face), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.body-text:first-child { font-weight: 500; letter-spacing: .025em; }
+.reference-grid { grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); }
+.product-grid { grid-template-columns: repeat(auto-fit, minmax(min(31rem, 100%), 1fr)); }
+.product-grid h2 { margin-top: 0; }
+.reference-grid figcaption, .comparison figcaption { margin-top: .5rem; }
+
+.crop {
+  --source-width: 1536;
+  --source-height: 864;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--w) / var(--h);
+  background: #11171e;
+}
+
+.crop img {
+  position: absolute;
+  width: calc(100% * var(--source-width) / var(--w));
+  height: calc(100% * var(--source-height) / var(--h));
+  left: calc(-100% * var(--x) / var(--w));
+  top: calc(-100% * var(--y) / var(--h));
+}
+
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin-top: .75rem;
+}
+
+.product {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: var(--w) / var(--h);
+  background: #11171e;
+}
+
+.product img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.comparison figure { display: grid; grid-template-rows: 1fr auto; }
+
+@media (max-width: 26rem) {
+  .comparison { grid-template-columns: 1fr; }
+}

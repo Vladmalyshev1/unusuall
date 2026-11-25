@@ -1,0 +1,91 @@
+@import "tailwindcss" source("..");
+@import "./fonts.css";
+@import "../components/ui/ui.css";
+@import "../components/header/header.css";
+
+@theme static {
+  --color-bg: #11171e;
+  --color-bg-deep: #0b121b;
+  --color-surface: #171d25;
+  --color-text: #eeeeee;
+  --color-text-secondary: #d3d5db;
+  --color-text-muted: #aeb5c0;
+  --color-line: #535c68;
+  --color-control-border: #818b98;
+  --color-active-border: #eeeeee;
+  --color-blue: #405b8a;
+  --color-glow: #849bc5;
+  --color-focus: #b4c9f0;
+  --color-error: #ffaaaa;
+  --color-success: #b5dfc9;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-display: "Unbounded", system-ui, sans-serif;
+  --spacing: 4px;
+  --radius-field: 10px;
+  --radius-card: 14px;
+  --radius-pill: 999px;
+  --container-site: 1440px;
+  --tracking-display: 0.045em;
+  --tracking-signature: 0.15em;
+  --text-display-home: clamp(1.875rem, 4.17vw, 4rem);
+  --text-display-home--line-height: 1.08;
+  --text-display-page: clamp(1.625rem, 3.39vw, 3.25rem);
+  --text-display-page--line-height: 1.1;
+  --text-display-cta: clamp(1.5rem, 3.125vw, 3rem);
+  --text-display-cta--line-height: 1.12;
+  --text-display-section: clamp(1.25rem, 2.35vw, 2.25rem);
+  --text-display-section--line-height: 1.16;
+}
+
+:root {
+  color-scheme: dark;
+  --page-gutter: clamp(16px, 4.8vw, 24px);
+  --duration-ui: 180ms;
+  --control-hit-area: 44px;
+  --site-header-height: 80px;
+}
+
+@media (min-width: 48rem) {
+  :root { --page-gutter: clamp(24px, 3.125vw, 32px); }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --page-gutter: clamp(32px, 6vw, 96px);
+    --site-header-height: 94px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-ui: 0ms; }
+}
+
+@layer base {
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: 400 1rem/1.5 var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-focus);
+    color: var(--color-bg-deep);
+  }
+}
+
+@utility site-container {
+  width: min(calc(100% - 2 * var(--page-gutter)), var(--container-site));
+  margin-inline: auto;
+}
+
+@utility display-heading {
+  font-family: var(--font-display);
+  font-weight: 200;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}

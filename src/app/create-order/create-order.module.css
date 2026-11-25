@@ -1,0 +1,349 @@
+:global(#main-content):has(> .page) {
+  max-width: none;
+  margin-block-start: calc(-1 * var(--site-header-height));
+  padding: 0;
+}
+
+.page {
+  --order-start: clamp(16px, 6.5vw, 28px);
+  --order-end: clamp(14px, 4vw, 28px);
+  background: var(--color-bg-deep);
+}
+
+.hero,
+.formSection {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.hero {
+  min-height: clamp(194px, 55.4vw, 275px);
+  border-block-end: 1px solid color-mix(in srgb, var(--color-line) 55%, transparent);
+  background: var(--color-bg-deep);
+}
+
+.heroArt,
+.bottomArt {
+  position: absolute;
+  z-index: -3;
+  pointer-events: none;
+}
+
+.heroArt {
+  inset: 38px 0 0 auto;
+  width: clamp(490px, 115%, 900px);
+  mask-image: linear-gradient(to bottom, transparent 10%, black 67%);
+}
+
+.heroArt img {
+  object-fit: cover;
+  object-position: right top;
+}
+
+.hero::after {
+  position: absolute;
+  z-index: -2;
+  inset: -7% auto auto -11%;
+  width: 114%;
+  height: 107%;
+  border: 1px solid color-mix(in srgb, var(--color-glow) 65%, transparent);
+  border-end-end-radius: 91% 59%;
+  background: radial-gradient(ellipse at 95% 127%, #3d5684, transparent 54%),
+    linear-gradient(165deg, var(--color-bg-deep) 35%, #101721 85%, #1f2e49);
+  box-shadow: 0 6px 20px #41649b55;
+  content: "";
+}
+
+.orbit {
+  position: absolute;
+  z-index: -1;
+  inset: 36% 8% auto auto;
+  width: 54%;
+  height: 44%;
+  overflow: visible;
+  color: color-mix(in srgb, var(--color-control-border) 61%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 73%);
+}
+
+.star:global(.ui-icon) {
+  position: absolute;
+  inset: 40% 17% auto auto;
+  width: 1.55rem;
+  height: 1.55rem;
+  color: var(--color-text);
+  clip-path: polygon(50% 0, 52% 46%, 100% 50%, 52% 53%, 50% 100%, 48% 53%, 0 50%, 48% 46%);
+  mask: radial-gradient(ellipse, black 10%, transparent 70%);
+}
+
+.heroContent {
+  padding: calc(var(--site-header-height) - 4px) var(--order-end) 37px calc(var(--order-start) + 2px);
+}
+
+.title {
+  font-size: clamp(1.35rem, 6.65vw, 2.6rem);
+  letter-spacing: 0.045em;
+  line-height: 1.08;
+}
+
+.tagline {
+  width: fit-content;
+  margin-block-start: 0.65rem;
+  border-inline-start: 1px solid var(--color-control-border);
+  padding-inline-start: clamp(0.65rem, 5.4vw, 1.375rem);
+  color: var(--color-text-secondary);
+  font-size: clamp(0.48rem, 2.04vw, 0.68rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.formSection {
+  background: radial-gradient(ellipse at 50% 38%, #101923, var(--color-bg-deep) 75%);
+}
+
+.formSection::after {
+  position: absolute;
+  z-index: -2;
+  inset: auto -17% 17px;
+  height: 110px;
+  border-block-end: 1px solid var(--color-line);
+  border-radius: 0 0 50% 50%;
+  background: radial-gradient(ellipse at 85% 105%, #3c5276, transparent 53%),
+    radial-gradient(ellipse at 10% 108%, #344c77, transparent 47%),
+    linear-gradient(transparent 20%, var(--color-bg-deep) 66%);
+  box-shadow: 0 11px 24px #3a58853d;
+  content: "";
+}
+
+.bottomArt { display: none; }
+
+.formFrame {
+  width: min(calc(100% - var(--order-start) - var(--order-end)), var(--container-site));
+  margin-inline: auto;
+  margin-inline-start: max(var(--order-start), calc((100% - var(--container-site)) / 2));
+  padding-block: 9px 37px;
+}
+
+.steps {
+  display: grid;
+  min-width: 0;
+  gap: 0.59rem;
+}
+
+.steps :global(.ui-form-step) {
+  grid-template-columns: 1.125rem minmax(0, 1fr);
+  gap: 0.24rem clamp(0.55rem, 3.5vw, 0.875rem);
+}
+
+.steps :global(.ui-step-title),
+.steps :global(.ui-step-number) {
+  font-size: 0.75rem;
+}
+
+.steps :global(.ui-step-number)::after {
+  inset-block: 1.23rem -0.22rem;
+  border-color: var(--color-control-border);
+}
+
+.steps :global(.ui-step-dash) { width: 0.75rem; }
+.stepBreak { display: none; }
+.steps :global(.ui-choices) { gap: 0.36rem; }
+
+.steps :global(.ui-choices--garment .ui-choice) {
+  min-height: 46px;
+  gap: 0.15rem;
+  padding-block: 0.2rem;
+  border-color: var(--color-line);
+  border-radius: 8px;
+  font-size: 0.625rem;
+}
+
+.steps :global(.ui-choices--garment .ui-choice-input:checked + .ui-choice) {
+  border-color: var(--color-active-border);
+  background: linear-gradient(145deg, #272d36, transparent 62%);
+}
+
+.steps :global([data-invalid="true"] .ui-choice) { border-color: var(--color-error); }
+.steps :global(.ui-choices--garment .ui-choice > .ui-icon:first-child) { width: 1.35rem; height: 1.35rem; }
+.steps :global(.ui-choice-check) { width: 0.68rem; height: 0.68rem; }
+
+.steps :global(.ui-upload) {
+  min-height: 59px;
+  gap: 0.1rem;
+  padding: 0.3rem;
+  border-radius: 8px;
+}
+
+.steps :global(.ui-upload .ui-icon) { width: 1.12rem; height: 1.12rem; }
+.steps :global(.ui-upload span:not(.ui-icon)) { font-size: 0.56rem; }
+
+.fieldPair {
+  display: grid;
+  gap: 0.34rem;
+}
+
+.steps :global(.ui-field-label) {
+  margin-block-end: 0.1rem;
+  font-size: 0.61rem;
+  line-height: 1.2;
+}
+
+.steps :global(.ui-field) {
+  padding: 0.28rem 0.7rem;
+  border-radius: 7px;
+  font-size: 1rem;
+}
+
+.steps :global(.ui-select) { padding-inline-end: 2rem; }
+.steps :global(.ui-select-icon) { inset-inline-end: 0.55rem; width: 0.9rem; height: 0.9rem; }
+.steps :global(.ui-textarea) { min-height: 44px; }
+.steps :global(.ui-field-message) { font-size: 0.75rem; }
+
+.submit {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0.75rem auto 0;
+}
+
+.action:global(.ui-action) {
+  --action-arrow-gap: clamp(0.55rem, 5vw, 1.5rem);
+  font-size: clamp(0.62rem, 2.74vw, 0.9rem);
+  letter-spacing: 0.16em;
+}
+
+.action[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; }
+
+.action :global(.ui-brackets) { padding-inline: clamp(1rem, 6vw, 1.6rem); }
+.action :global(.ui-icon) { width: 1.43rem; height: 1.43rem; }
+
+.note {
+  margin-block-start: 0.3rem;
+  color: var(--color-text-muted);
+  font-size: clamp(0.51rem, 2.03vw, 0.73rem);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.status:not(:empty) { margin-block-start: 0.4rem; font-size: 0.875rem; }
+
+@media (min-width: 48rem) {
+  .steps :global(.ui-step-title),
+  .steps :global(.ui-step-number) { font-size: 0.875rem; }
+  .steps :global(.ui-choices--garment .ui-choice) { min-height: 65px; font-size: 0.75rem; }
+  .steps :global(.ui-choices--garment .ui-choice > .ui-icon:first-child) { width: 1.875rem; height: 1.875rem; }
+  .steps :global(.ui-field) { font-size: 0.9375rem; }
+  .steps :global(.ui-field-label) { font-size: 0.75rem; }
+  .fieldPair { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+}
+
+@media (min-width: 64rem) {
+  .page {
+    --order-start: var(--page-gutter);
+    --order-end: clamp(38px, 4.3vw, 72px);
+  }
+
+  .hero { min-height: clamp(202px, 16.55vw, 300px); }
+  .heroArt { inset-block-start: 0; width: 64%; mask-image: linear-gradient(93deg, transparent, black 42%); }
+  .heroArt img { object-position: center 19%; }
+  .hero::after {
+    inset: -14% auto auto -6%;
+    width: 90%;
+    height: 121%;
+    border-end-end-radius: 60% 107%;
+    background: radial-gradient(ellipse at 98% 10%, #3e4e68, transparent 33%),
+      radial-gradient(ellipse at 74% 120%, #324c77, transparent 54%),
+      linear-gradient(152deg, #131820 59%, #1a2333);
+  }
+
+  .orbit { inset: 20% 30.2% auto auto; width: 48%; height: 79%; mask-image: none; }
+  .star:global(.ui-icon) { inset: 32% 36.9% auto auto; width: 4.6rem; height: 5.25rem; }
+
+  .heroContent {
+    display: flex;
+    align-items: end;
+    gap: clamp(24px, 4.75vw, 76px);
+    width: min(calc(100% - 2 * var(--order-start) + 1.5rem), var(--container-site));
+    margin-inline: auto;
+    padding: calc(var(--site-header-height) + 20px) 0 24px;
+  }
+
+  .title { font-size: clamp(2.12rem, 3.05vw, 3.35rem); }
+  .tagline {
+    margin: 0 0 0.22rem;
+    padding-inline-start: clamp(18px, 2.4vw, 38px);
+    font-size: clamp(0.58rem, 0.8vw, 0.8rem);
+    letter-spacing: 0.095em;
+  }
+
+  .formFrame { padding-block: clamp(21px, 1.82vw, 34px) 73px; }
+  .steps { gap: 1.125rem; }
+  .steps :global(.ui-form-step) {
+    grid-template-columns: clamp(1.3rem, 2.9vw, 2.8rem) minmax(0, 1fr) minmax(0, 77.4%);
+    column-gap: clamp(0.55rem, 1.3vw, 1.3rem);
+  }
+
+  .steps :global(.ui-step-title),
+  .steps :global(.ui-step-number) {
+    padding-block-start: 0.3rem;
+    font-size: clamp(0.74rem, 1.04vw, 1rem);
+    line-height: 1.3;
+  }
+
+  .steps :global(.ui-step-title) { max-width: 10rem; }
+  .stepBreak { display: initial; }
+  .steps :global(.ui-step-number)::after { inset: 1.8rem auto -0.86rem 9px; }
+  .steps :global(.ui-form-step:last-child .ui-step-number)::after { display: none; }
+  .steps :global(.ui-form-step:first-of-type :is(.ui-step-title, .ui-step-number)) { padding-block-start: 1.02rem; }
+  .steps :global(.ui-form-step:first-of-type .ui-step-number)::after { inset-block-start: 2.6rem; }
+  .steps :global(.ui-step-dash) { width: 1.04rem; }
+  .steps :global(.ui-choices) { gap: clamp(11px, 1.36vw, 21px); }
+  .steps :global(.ui-choices--garment .ui-choice) {
+    min-height: clamp(72px, 6.12vw, 100px);
+    gap: 0.4rem;
+    border-radius: var(--radius-field);
+    font-size: 0.875rem;
+  }
+  .steps :global(.ui-choices--garment .ui-choice > .ui-icon:first-child) { width: 2.5rem; height: 2.5rem; }
+  .steps :global(.ui-choice-check) { inset: 0.62rem 0.87rem auto auto; width: 1.14rem; height: 1.14rem; }
+
+  .steps :global(.ui-upload) { min-height: 84px; gap: 0.2rem; border-radius: var(--radius-field); }
+  .steps :global(.ui-upload .ui-icon) { width: 1.5rem; height: 1.5rem; }
+  .steps :global(.ui-upload span:not(.ui-icon)) { font-size: 0.73rem; }
+
+  .fieldPair { gap: clamp(20px, 2.35vw, 36px); }
+  .details { gap: clamp(26px, 3.7vw, 57px); }
+  .steps :global(.ui-field-label) { margin-block-end: 0.45rem; }
+  .steps :global(.ui-field) {
+    padding-inline: 1.3rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+  }
+  .steps :global(.ui-select) { padding-inline-end: 2.75rem; }
+  .steps :global(.ui-select-icon) { inset-inline-end: 0.9rem; }
+  .steps :global(.ui-textarea) { min-height: 56px; }
+
+  .submit { width: min(100%, 348px); margin: 1.3rem 0 0 auto; }
+  .action:global(.ui-action) { min-height: 49px; font-size: 0.9375rem; }
+  .action :global(.ui-brackets) { min-height: 49px; padding-inline: clamp(1.5rem, 2.4vw, 2.4rem); }
+  .action :global(.ui-icon) { width: 1.85rem; height: 1.85rem; }
+
+  .formSection::after {
+    inset: auto -40% 4px -5%;
+    height: 208px;
+    background: radial-gradient(ellipse at 55% 117%, #536684, transparent 28%),
+      radial-gradient(ellipse at 11% 119%, #395583, transparent 32%),
+      linear-gradient(transparent 22%, #131b28 96%);
+  }
+  .bottomArt {
+    display: block;
+    z-index: -1;
+    inset: auto auto 0 0;
+    width: 44%;
+    height: clamp(110px, 10.4vw, 175px);
+    clip-path: ellipse(99% 105% at -19% 104%);
+    mask-image: linear-gradient(to right, black 25%, transparent 90%);
+  }
+  .bottomArt img { object-fit: cover; object-position: center 66%; transform: scaleX(-1); }
+}
